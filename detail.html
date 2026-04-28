@@ -20,30 +20,32 @@
 #editBtn{position:fixed;right:0;bottom:0;width:50px;height:50px;opacity:0.01;background:transparent;border:none;}
 #saveBtn{position:fixed;right:50px;bottom:0;width:50px;height:50px;opacity:0.01;background:transparent;border:none;display:none;}
 </style>
+<style>
+/* 透明编辑按钮 */
+#editBtn{position:fixed;right:0;bottom:0;width:60px;height:60px;opacity:0.01;background:none;border:none;}
+/* 底部结束按钮 */
+#endBtn{display:block;width:100%;padding:10px 0;text-align:center;background:#f5f5f5;color:#666;border:none;margin-top:20px;}
+</style>
 
+<!-- 隐形编辑按钮 -->
 <button id="editBtn">编辑</button>
-<button id="saveBtn">保存</button>
+
+<!-- 底部结束按钮 -->
+<button id="endBtn">结束，回到不可编辑状态</button>
 
 <script>
-// 一打开页面 → 强制关闭编辑
+// 初始状态：禁止编辑
 document.body.contentEditable = false;
 
-// 点编辑 → 开启
-function startEdit(){
+// 开启编辑
+editBtn.onclick = function(){
   document.body.contentEditable = true;
-  editBtn.style.display = 'none';
-  saveBtn.style.display = 'block';
-  alert('已开启编辑，可修改文字');
-}
+  alert("已开启编辑，可修改文字");
+};
 
-// 点保存 → 强制关闭编辑（关键！）
-function stopEdit(){
+// 结束编辑 → 恢复不可编辑
+endBtn.onclick = function(){
   document.body.contentEditable = false;
-  editBtn.style.display = 'block';
-  saveBtn.style.display = 'none';
-  alert('已锁定编辑，刷新将复原');
-}
-
-editBtn.onclick = startEdit;
-saveBtn.onclick = stopEdit;
+  alert("已关闭编辑，恢复不可编辑状态");
+};
 </script>
