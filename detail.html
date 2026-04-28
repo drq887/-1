@@ -21,31 +21,28 @@
 #saveBtn{position:fixed;right:50px;bottom:0;width:50px;height:50px;opacity:0.01;background:transparent;border:none;display:none;}
 </style>
 <style>
-/* 透明编辑按钮 */
-#editBtn{position:fixed;right:0;bottom:0;width:60px;height:60px;opacity:0.01;background:none;border:none;}
-/* 底部结束按钮 */
-#endBtn{display:block;width:100%;padding:10px 0;text-align:center;background:#f5f5f5;color:#666;border:none;margin-top:20px;}
+/* 左下角：开启编辑 */
+#edit{position:fixed;left:0;bottom:0;width:70px;height:70px;opacity:0;background:none;border:none;}
+/* 右下角：关闭编辑 */
+#save{position:fixed;right:0;bottom:0;width:70px;height:70px;opacity:0;background:none;border:none;}
 </style>
 
-<!-- 隐形编辑按钮 -->
-<button id="editBtn">编辑</button>
-
-<!-- 底部结束按钮 -->
-<button id="endBtn">结束，回到不可编辑状态</button>
+<button id="edit">开</button>
+<button id="save">关</button>
 
 <script>
-// 初始状态：禁止编辑
+// 初始禁止编辑
 document.body.contentEditable = false;
 
-// 开启编辑
-editBtn.onclick = function(){
-  document.body.contentEditable = true;
-  alert("已开启编辑，可修改文字");
+// 左下角 → 开启编辑
+edit.onclick = function(){
+    document.body.contentEditable = true;
+    alert("已开启编辑");
 };
 
-// 结束编辑 → 恢复不可编辑
-endBtn.onclick = function(){
-  document.body.contentEditable = false;
-  alert("已关闭编辑，恢复不可编辑状态");
+// 右下角 → 关闭编辑
+save.onclick = function(){
+    document.body.contentEditable = false;
+    alert("已关闭编辑");
 };
 </script>
