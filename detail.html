@@ -16,21 +16,34 @@
 #editBtn{position:fixed;right:0;bottom:0;width:50px;height:50px;opacity:0.02;}
 #saveBtn{position:fixed;right:60px;bottom:0;width:50px;height:50px;opacity:0.02;display:none;}
 </style>
+<style>
+#editBtn{position:fixed;right:0;bottom:0;width:50px;height:50px;opacity:0.01;background:transparent;border:none;}
+#saveBtn{position:fixed;right:50px;bottom:0;width:50px;height:50px;opacity:0.01;background:transparent;border:none;display:none;}
+</style>
 
-<div id="editBtn" onclick="startEdit()">编辑</div>
-<div id="saveBtn" onclick="stopEdit()">保存</div>
+<button id="editBtn">编辑</button>
+<button id="saveBtn">保存</button>
 
 <script>
+// 一打开页面 → 强制关闭编辑
+document.body.contentEditable = false;
+
+// 点编辑 → 开启
 function startEdit(){
   document.body.contentEditable = true;
-  document.getElementById('editBtn').style.display = 'none';
-  document.getElementById('saveBtn').style.display = 'block';
-  alert('已开启编辑模式，可直接修改文字');
+  editBtn.style.display = 'none';
+  saveBtn.style.display = 'block';
+  alert('已开启编辑，可修改文字');
 }
+
+// 点保存 → 强制关闭编辑（关键！）
 function stopEdit(){
   document.body.contentEditable = false;
-  document.getElementById('editBtn').style.display = 'block';
-  document.getElementById('saveBtn').style.display = 'none';
-  alert('已保存编辑（仅当前页面有效）');
+  editBtn.style.display = 'block';
+  saveBtn.style.display = 'none';
+  alert('已锁定编辑，刷新将复原');
 }
+
+editBtn.onclick = startEdit;
+saveBtn.onclick = stopEdit;
 </script>
