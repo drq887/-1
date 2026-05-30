@@ -38,3 +38,10 @@ save.onclick = function(){
     alert("已关闭编辑");
 };
 </script>
+<script>
+// 拦截浏览器自带的返回/后退操作，强制跳转到列表页
+history.replaceState(null, null, location.href);
+window.addEventListener('popstate', function() {
+    location.href = "index.html"; // 这里就是你的列表页地址，同目录下直接写文件名即可
+});
+</script>
